@@ -89,6 +89,21 @@
                     </select>
                 </div>
 
+                {{-- checkboxes --}}
+                <div class="mb-3">
+                    <div>
+                        <label class="form-label">Technologies</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="option1" name="technologies">
+                        <label class="form-check-label" for="inlineCheckbox1">1</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="option2" name="technologies">
+                        <label class="form-check-label" for="inlineCheckbox2">2</label>
+                    </div>
+
+                </div>
 
 
 
