@@ -77,10 +77,13 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        // mi passo il model di type
+        // Prendo tutti i Types
         $types = Type::all();
 
-        return view('admin.projects.edit', compact('project', 'types'));
+        // Prendo tutti i Technologies
+        $technologies = Technology::all();
+
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -92,6 +95,12 @@ class ProjectController extends Controller
 
         $project->update($data);
         $project->slug = Str::of($project->title)->slug('-');
+
+        if (isset($data['technologies'])) {
+            $project->technologies()->sync($data['technologies']);
+        } else {
+            $project->technologies()->sync([]);
+        }
 
         $project->save();
 
