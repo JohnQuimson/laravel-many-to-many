@@ -44,7 +44,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $data = $this->validation($request->all());
+
+        // dd($data);
 
         $project = new Project();
 
@@ -52,6 +56,10 @@ class ProjectController extends Controller
         $project->slug = Str::of($project->title)->slug('-');
 
         $project->save();
+
+        if (isset($data['technologies'])) {
+            $project->technologies()->sync($data['technologies']);
+        }
 
         return redirect()->route('admin.projects.show', $project);
     }
@@ -108,7 +116,8 @@ class ProjectController extends Controller
             'last_updated' => 'required|max:100',
             'main_language' => 'required|max:200',
             'slug' => 'nullable|max:70',
-            'type_id' => 'nullable'
+            'type_id' => 'nullable',
+            'technologies' => 'nullable|exists:technologies,id',
         ], [
             'title.required' => 'Il titolo è obbligatorio',
             'title.max' => 'Il titolo deve avere massimo :max caratteri',
@@ -122,6 +131,8 @@ class ProjectController extends Controller
             'slug.nullable' => 'Il campo slug NON è obbligatorio',
             'slug.max' => 'Il campo slug deve avere deve avere massimo :max caratteri',
             'type_id.nullable' => 'Il campo type_id NON è obbligatorio',
+            'technologies.nullable' => 'Il campo technologies NON è obbligatorio',
+            'technologies.exists' => 'La tecnologia selezionata non esiste'
 
         ])->validate();
 

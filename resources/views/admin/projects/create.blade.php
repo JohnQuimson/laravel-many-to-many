@@ -5,7 +5,7 @@
         <div class="container">
 
             {{-- Validation --}}
-            {{-- @if ($errors->any())
+            @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -13,7 +13,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif --}}
+            @endif
             {{-- Validation --}}
 
             <form action="{{ route('admin.projects.store') }}" method="POST">
@@ -21,7 +21,7 @@
 
                 {{-- titolo --}}
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Titolo</label>
+                    <label for="exampleInputEmail1" class="form-label" required>Titolo</label>
 
                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}">
 
@@ -47,7 +47,7 @@
                     <select name="visibility" id="visibility" class="form-control @error('visibility') is-invalid @enderror">
                         <option disabled {{ old('visibility') == '' ? 'selected' : '' }}>Select a visibility option</option>
                         <option value="Public" {{ old('visibility') == 'Public' ? 'selected' : '' }}>Public</option>
-                        <option value="Pivate" {{ old('visibility') == 'Private' ? 'selected' : '' }}>Private</option>
+                        <option value="Private" {{ old('visibility') == 'Private' ? 'selected' : '' }}>Private</option>
                     </select>
 
                     @error('visibility')
@@ -97,7 +97,8 @@
 
                     @foreach ($technologies as $technology)
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" id="technology-{{ $technology->id }}" type="checkbox" value="{{ $technology->id }}" name="technologies">
+                            <input class="form-check-input" id="technology-{{ $technology->id }}" type="checkbox" value="{{ $technology->id }}" name="technologies[]"
+                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
                             <label class="form-check-label" for="technology-{{ $technology->id }}">{{ $technology->title }}</label>
                         </div>
                     @endforeach

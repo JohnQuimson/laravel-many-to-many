@@ -9,7 +9,18 @@
         <div class="cont-info d-flex gap-5">
             <span>{{ $project->main_language }}</span>
             <span>Ultima modifica: {{ $project->last_updated }}</span>
-            <span>Categoria: {{ $project->type?->title }}</span>
+            <span>Categoria: {{ $project->type?->title ?: 'Nessuna categoria' }}</span>
+            <div>
+                Tecnologie utilizzate
+                <ul>
+
+                    @foreach ($project->technologies as $technology)
+                        <li>
+                            {{ $technology->title }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
 
         <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning">Modifica</a>
