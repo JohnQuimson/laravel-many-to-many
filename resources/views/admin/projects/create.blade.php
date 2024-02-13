@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="main-create">
-        <div class="container">
+        <h1>Creazione Progetto</h1>
+        <div class="container mt-5">
 
             {{-- Validation --}}
             @if ($errors->any())
@@ -43,7 +44,7 @@
 
                 {{-- visibility --}}
                 <div class="mb-3">
-                    <label for="visibility" class="form-label">Visibility</label>
+                    <label for="visibility" class="form-label">Visibilità</label>
                     <select name="visibility" id="visibility" class="form-control @error('visibility') is-invalid @enderror">
                         <option disabled {{ old('visibility') == '' ? 'selected' : '' }}>Select a visibility option</option>
                         <option value="Public" {{ old('visibility') == 'Public' ? 'selected' : '' }}>Public</option>
@@ -59,7 +60,7 @@
 
                 {{-- last_updated --}}
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">last_updated</label>
+                    <label for="exampleInputEmail1" class="form-label">Ultimo aggiornamento</label>
                     <input type="text" class="form-control @error('last_updated') is-invalid @enderror" name="last_updated" value="{{ old('last_updated') }}">
 
                     @error('last_updated')
@@ -70,7 +71,7 @@
 
                 {{-- main_language --}}
                 <div class="mb-3">
-                    <label class="form-label">main_language</label>
+                    <label class="form-label">Linguaggio principale</label>
                     <input type="text" name="main_language" class="form-control @error('main_language') is-invalid @enderror" value="{{ old('main_language') }}">
 
                     @error('main_language')
