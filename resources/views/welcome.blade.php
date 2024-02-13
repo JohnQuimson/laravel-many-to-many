@@ -15,9 +15,15 @@
 
                 <p class="short-description">I'm a student of Boolean, studying to become a full-stack web developer. Big fan of technology and outdoor activities.</p>
 
-                <a href="https://github.com/JohnQuimson" class="github-btn" target="_blank">
-                    my github
-                </a>
+                <div class="cont-btn d-flex gap-5">
+                    <a href="{{ route('admin.projects.index') }}" class="work-btn">
+                        Take a look to my work list
+                    </a>
+
+                    <a href="https://github.com/JohnQuimson" class="github-btn" target="_blank">
+                        my github
+                    </a>
+                </div>
 
             </div>
         </div>
