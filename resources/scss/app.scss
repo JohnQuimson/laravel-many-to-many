@@ -164,7 +164,8 @@ footer {
 
 .main-dashboard,
 .main-index,
-.main-create {
+.main-create,
+.main-show {
     background-color: #0a1930;
     margin-left: 230px;
     height: 100vh;
@@ -204,6 +205,58 @@ footer {
 
             button {
                 max-width: 100px;
+            }
+        }
+    }
+}
+
+// -----------
+// SHOW
+// -----------
+.main-show {
+    color: white;
+
+    h1 {
+        text-transform: uppercase;
+        color: #74c6cc;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .jq-cont {
+        border: 1px solid #74c6cc;
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        border-radius: 20px;
+        padding: 10px;
+
+        .header-show {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+
+            span {
+                color: #74c6cc;
+            }
+        }
+
+        .cont-info {
+            .riga {
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+
+        a {
+            max-width: 100px;
+
+            &:hover {
+                background-color: #f1d170;
+                color: white;
             }
         }
     }
