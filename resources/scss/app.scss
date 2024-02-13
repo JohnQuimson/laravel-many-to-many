@@ -177,4 +177,34 @@ footer {
 // -----------
 .main-create {
     color: white;
+
+    h1 {
+        text-transform: uppercase;
+        color: #74c6cc;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .container {
+        input,
+        select {
+            background-color: transparent;
+            border: 1px solid #74c6cc;
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            select:focus {
+                background-color: #050f1d;
+            }
+
+            button {
+                max-width: 100px;
+            }
+        }
+    }
 }
